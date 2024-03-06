@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomewebpajakController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +42,21 @@ use App\Http\Controllers\LoginController;
 //     });
 // });
 
-Route::get('/listbarang/{id}/{nama}', function($id, $nama){
-    return view('list_barang', compact('id', 'nama'));
-});
+// Route::get('/listbarang/{id}/{nama}', function($id, $nama){
+//     return view('list_barang', compact('id', 'nama'));
+// });
 
 // Route::get('/listbarang/{id}/{nama}', [ListBarangController::class, 'tampilkan']);
 
 // Login Routes
 Route::get('/login_webpajak', [LoginController::class, 'index']);
+
+// Register Routes
+Route::get('/register_webpajak', [RegisterController::class, 'index']);
+
+// Dashboard Routes
+Route::get('/dashboard_webpajak', 'DashboardController@index')->name('dashboard_webpajak');
+
+//Home Web Pajak Routes
+Route::get('/home_webpajak', 'HomewebpajakController@index')->name('home_webpajak');
+
