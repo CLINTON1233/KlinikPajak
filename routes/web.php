@@ -55,7 +55,7 @@ Route::get('/login_webpajak', [LoginController::class, 'index']);
 Route::get('/register_webpajak', [RegisterController::class, 'index']);
 
 // Dashboard Routes
-Route::get('/dashboard_webpajak', 'DashboardController@index')->name('dashboard_webpajak');
+Route::get('/dashboard_webpajak',  [DashboardController::class, 'index']);
 
 //Home Web Pajak Routes
 Route::get('/home_webpajak', 'HomewebpajakController@index')->name('home_webpajak');
