@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\RegisterKonsultanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomewebpajakController;
 
@@ -49,14 +49,16 @@ use App\Http\Controllers\HomewebpajakController;
 // Route::get('/listbarang/{id}/{nama}', [ListBarangController::class, 'tampilkan']);
 
 // Login Routes
-Route::get('/login_webpajak', [LoginController::class, 'index']);
+Route::get('/loginadmin_webpajak', [LoginAdminController::class, 'index']); // sesuaikan dengan method yang ada di LoginController
+
+Route::get('/logout_webpajak', [LogoutController::class, 'index']); 
 
 // Register Routes
-Route::get('/register_webpajak', [RegisterController::class, 'index']);
+Route::get('/register_konsultan', [RegisterController::class, 'index']);
 
 // Dashboard Routes
 Route::get('/dashboard_webpajak',  [DashboardController::class, 'index']);
 
 //Home Web Pajak Routes
-Route::get('/home_webpajak', 'HomewebpajakController@index')->name('home_webpajak');
+Route::get('/home_webpajak', [HomewebpajakController::class, 'index']);
 

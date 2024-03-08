@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomewebpajakController extends Controller
+class LoginAdminController extends Controller
 {
     public function index()
     {
-        return view('home_webpajak');
+        return view('loginadmin_webpajak');
     }
 }
