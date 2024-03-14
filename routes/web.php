@@ -1,11 +1,16 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
-Use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\LoginKonsultanController;
+use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\RegisterKonsultanController;
+use App\Http\Controllers\RegisteruserController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HomewebpajakController;
+use App\Http\Controllers\HomePajakController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +24,15 @@ use App\Http\Controllers\HomewebpajakController;
 */
 
 //Route::get('/', function () {
-    //return view('welcome');
+//return view('welcome');
 //});
 
 // Route::get('/', [HomeController::class, 'index']);
 // Route::get('contact', [HomeController::class, 'contact']);
 
-// Route::get('/welcome', function () {
-//     return view('welcome');
-// });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 // Route::get('/user/{id}', function ($id) {
 //     return 'User dengan ID ' . $id;
 // });
@@ -48,17 +53,38 @@ use App\Http\Controllers\HomewebpajakController;
 
 // Route::get('/listbarang/{id}/{nama}', [ListBarangController::class, 'tampilkan']);
 
-// Login Routes
-Route::get('/loginadmin_webpajak', [LoginAdminController::class, 'index']); // sesuaikan dengan method yang ada di LoginController
 
-Route::get('/logout_webpajak', [LogoutController::class, 'index']); 
+// Login  Admin Route
+Route::get('/loginadmin_webpajak', [LoginAdminController::class, 'showLoginForm'])->name('login.admin');
+Route::post('/loginadmin_webpajak', [LoginAdminController::class, 'login']);
 
-// Register Routes
-Route::get('/register_konsultan', [RegisterController::class, 'index']);
+// Login User Route
+Route::get('/loginuser_webpajak', [LoginUserController::class, 'showLoginForm'])->name('login.user');
+Route::post('/loginuser_webpajak', [LoginUserController::class, 'login']);
 
-// Dashboard Routes
-Route::get('/dashboard_webpajak',  [DashboardController::class, 'index']);
+// Login Konsultan Route
+Route::get('/loginkonsultan_webpajak', [LoginKonsultanController::class, 'showLoginForm'])->name('login.konsultan');
+Route::post('/loginkonsultan_webpajak', [LoginKonsultanController::class, 'login']);
 
-//Home Web Pajak Routes
-Route::get('/home_webpajak', [HomewebpajakController::class, 'index']);
+//Logout
+Route::get('/logout_webpajak', [LogoutController::class, 'logout'])->name('logout');
 
+//Regiter Admin Route
+Route::get('/registeradmin_webpajak', [RegisterAdminController::class, 'showRegistrationForm'])->name('register.admin');
+Route::post('/registeradmin_webpajak', [RegisterAdminController::class, 'register']);
+
+// Register Konsultan Route
+Route::get('/registerkonsultan_webpajak', [RegisterKonsultanController::class, 'showRegistrationForm'])->name('register.konsultan');
+Route::post('/registerkonsultan_webpajak', [RegisterKonsultanController::class, 'register']);
+
+// Register User Route
+Route::get('/registeruser_webpajak', [RegisterUserController::class, 'showRegistrationForm'])->name('register.user');
+Route::post('/registeruser_webpajak', [RegisterUserController::class, 'register']);
+
+// Dashboard Route
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard_webpajak',  [DashboardController::class, 'index'])->name('dashboard');
+});
+
+//Home pajak
+Route::get('/Homepajak', [HomePajakController::class, 'index']);
