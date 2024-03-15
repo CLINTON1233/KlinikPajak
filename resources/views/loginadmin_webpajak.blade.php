@@ -4,7 +4,6 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
-
     $myusername = $_POST['username'];
     $mypassword = $_POST['password'];
 
@@ -12,10 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $result = mysqli_query($db, $sql);
 
-
     $count = mysqli_num_rows($result);
 
-    // var_dump($count);die;
     // If result matched $myusername and $mypassword, table row must be 1 row
     if ($count == 1) {
         $row = mysqli_fetch_assoc($result);
@@ -24,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //before PHP 5.3
         //session_register("myusername");
-
 
         $_SESSION['login_user'] = $myusername;
 
@@ -44,12 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login | Sudut Pajak</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <!-- style css -->
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{{ asset('style/tailwindcss3.4.1.js') }}">
+    <!-- Your custom styles -->
     <link rel="stylesheet" href="{{ asset('PBL-25/style2.css') }}">
     <link rel="stylesheet" href="{{ asset('PBL-25/style.css') }}">
 
 </head>
-
 
 <body>
     <div class="container">

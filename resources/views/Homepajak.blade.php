@@ -5,25 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudut Pajak</title>
-    <link rel="stylesheet" href="{{ asset('style/cssstyle.css') }}">
-
+    <!-- Tambahkan link ke Tailwind CSS -->
+    <link rel="stylesheet" href="{{ asset('PBL-25/style/tailwindcss3.4.1.js') }}">
     <style>
-        /* CSS untuk mengatur tata letak gambar */
-        .image-container {
-            display: flex;
-            /* Menggunakan flexbox */
-            flex-direction: column;
-            /* Mengatur tata letak menjadi kolom */
-            align-items: center;
-            /* Mengatur gambar berada di tengah */
-        }
-
-        .image-container img {
-            max-width: 100%;
-            /* Maksimum lebar gambar adalah lebar parent */
-            margin: 10px 0;
-            /* Jarak antara gambar */
-        }
+        /* CSS untuk mengatur tata letak gambar tidak diperlukan lagi */
 
         /* Gaya baru untuk paragraf */
         p {
@@ -43,18 +28,25 @@
     </style>
 </head>
 
-<body>
+<body class="bg-gray-100">
+    <!-- Tambahkan kelas background warna abu-abu pada body menggunakan Tailwind CSS -->
     <center>
-        <h1>Selamat Datang di Website Sudut Pajak</h1>
+        <h1 class="text-3xl font-bold my-4">Selamat Datang di Website Sudut Pajak</h1>
+        <!-- Menggunakan kelas Tailwind untuk mengatur ukuran teks dan margin atas/bawah -->
     </center>
-    <p>Kami "sudut pajak" merupakan layanan pajak berbasis website.
+    <p class="mx-4">
+        <!-- Menggunakan kelas Tailwind untuk mengatur margin horizontal pada paragraf -->
+        Kami "sudut pajak" merupakan layanan pajak berbasis website.
         Saat ini sudut pajak memberikan layanan perpajakan online secara gratis baik konsultasi maupun secara teori dengan tujuan untuk memberikan solusi permasalahan perpajakan oleh wajib pajak yang terdaftar dan yang belum terdaftar.
         Fokus utama sudut pajak saat ini adalah untuk mendampingi pelaku UMKM dalam memahami peraturan perpajakan.
     </p>
 
-    <div class="image-container mt-2">
-        <img src="{{ asset('img/BeritaPajak.jpg') }}" alt="BeritaPajak">
-        <img src="{{ asset('img/GambarPajak.png') }}" alt="GambarPajak">
+    <div class="flex flex-col items-center mt-2">
+        <!-- Menggunakan kelas Flexbox dan align-center untuk mengatur tata letak gambar -->
+        <img src="{{ asset('img/BeritaPajak.jpg') }}" alt="BeritaPajak" class="max-w-full mb-4">
+        <!-- Menggunakan kelas Tailwind untuk mengatur lebar maksimum gambar dan margin bawah -->
+        <img src="{{ asset('img/GambarPajak.png') }}" alt="GambarPajak" class="max-w-full">
+        <!-- Menggunakan kelas Tailwind untuk mengatur lebar maksimum gambar -->
     </div>
 </body>
 
